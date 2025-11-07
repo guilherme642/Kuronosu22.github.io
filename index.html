@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -8,267 +8,546 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="/imagens/icons/favicon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --primary-blue: #0093D4;
+            --primary-magenta: #E91E8C;
+            --dark-bg: #000000;
+            --light-bg: #FFFFFF;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --gradient-primary: linear-gradient(135deg, #0093D4 0%, #E91E8C 100%);
+            --gradient-overlay: linear-gradient(135deg, rgba(0, 147, 212, 0.85) 0%, rgba(233, 30, 140, 0.85) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar-custom {
+            background: var(--dark-bg);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-custom .nav-link {
+            color: var(--light-bg) !important;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 1.5rem !important;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-custom .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-custom .nav-link:hover::after {
+            width: 80%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.4);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-overlay);
+            opacity: 0.7;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #00D4FF 0%, #FF00FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-gradient {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 147, 212, 0.3);
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 147, 212, 0.5);
+            color: white;
+        }
+
+        /* Logo Section */
+        .logo-section {
+            background: var(--dark-bg);
+            padding: 3rem 0;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 6rem 0;
+            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .content-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
+
+        .content-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .content-image {
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .content-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--text-dark);
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-text {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 0;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        .cta-box {
+            background: var(--gradient-primary);
+            border-radius: 30px;
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 60px rgba(0, 147, 212, 0.3);
+        }
+
+        .cta-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn-cta {
+            background: white;
+            color: var(--primary-blue);
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            background: #f0f0f0;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .accordion-item {
+            border: 2px solid #e0e0e0;
+            border-radius: 15px !important;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .accordion-button {
+            background: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, rgba(0, 147, 212, 0.1) 0%, rgba(233, 30, 140, 0.1) 100%);
+            color: var(--primary-blue);
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: var(--primary-blue);
+        }
+
+        .accordion-body {
+            padding: 1.5rem;
+            background: #f8f9fa;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .content-section {
+                padding: 3rem 0;
+            }
+
+            .features-section,
+            .cta-section,
+            .faq-section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #020203;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="/imagens/logofull.png" alt="" style="width: 224px;">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="/imagens/logofull.png" alt="MarketES" style="width: 200px;">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav justify-content-end text-end g-3" style="width: 100%;">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link link-light fs-5" href="index.html">Início</a>
+                        <a class="nav-link" href="index.html">Início</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light fs-5" href="sobre.html">Sobre</a>
+                        <a class="nav-link" href="sobre.html">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-light fs-5" href="contato.html">Contato</a>
+                        <a class="nav-link" href="contato.html">Contato</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <main>
-        <section>
-            <div class="container-fluid col-12 p-0">
-                <div class="card bg-dark text-white" style="border-radius: 0;">
-                    <img class="card-img" src="/imagens/delivery-woman-with-food-package.jpg" alt="Title"
-                        style="filter: brightness(30%) blur(5px) saturate(40%); min-height: 300px; max-height: 100vh; object-fit: cover;" />
-                    <div
-                        class="card-img-overlay text-center d-flex justify-content-center align-items-center flex-column">
-                        <h1 class="display-4 mb-sm-5 col-sm-8 mb-5"><strong>O mini-mercado mais tecnológico do <span
-                                    class="text-primary">Espírito</span>
-                                <span style="color: #eb00eb;">Santo</span></strong>
-                        </h1>
-                        <a name="" id="" class="btn btn-primary rounded-5 col-sm-3 fs-3 p-2" href="#saibamais"
-                            role="button">Quero
-                            saber mais</a>
-                    </div>
-                </div>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <img class="hero-bg" src="/imagens/delivery-woman-with-food-package.jpg" alt="Hero Background">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    O mini-mercado mais tecnológico do<br>
+                    <span class="gradient-text">Espírito Santo</span>
+                </h1>
+                <a href="#saibamais" class="btn btn-gradient">Quero saber mais</a>
             </div>
         </section>
-        <section>
-            <div class="container-fluid col-12 p-0 d-flex justify-content-center" style="background-color: #020203;">
-                <img src="imagens/logofull.png" alt="" class="img-fluid">
+
+        <!-- Logo Section -->
+        <section class="logo-section">
+            <div class="container text-center">
+                <img src="/imagens/logofull.png" alt="MarketES Logo" class="img-fluid" style="max-width: 400px;">
             </div>
         </section>
-        <section style="background-color: rgba(255, 0, 255, 0.2);">
-            <div class="container-fluid col-11 py-5 border-bottom border-dark border-2" id="saibamais">
-                <div class="row justify-content-between align-items-center g-2">
-                    <div class="col-sm-7">
-                        <div class="row justify-content-center align-items-center g-2">
-                            <div class="col">
-                                <h1 class="mb-4">Mais praticidade no seu dia a dia. Conheça o Market ES!</h1>
-                                <p class="fs-5">Imagine ter um mercado completo à sua disposição, 24 horas por dia, sem
-                                    precisar enfrentar filas ou o trânsito caótico
-                                    da cidade. No Market ES, a experiência de compra é única e personalizada. Com uma
-                                    variedade incrível de produtos, desde
-                                    alimentos frescos e orgânicos até itens de última geração, você encontra tudo o que
-                                    precisa para o seu dia a dia, e
-                                    muito mais. Esqueça a rotina cansativa de ir ao supermercado e descubra a
-                                    praticidade de ter um mercado completo no seu
-                                    próprio condomínio.</p>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center align-items-center g-2">
-                            <a name="" id="" class="btn btn-primary col-sm-6 col-10 rounded-5 my-4" href="#"
-                                role="button">Saiba
-                                mais
-                                sobre nossa empresa!</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="imagens/renan.jpg" alt="" class="img-fluid rounded-4 w-100"
-                            style="max-height: 600px; object-fit: cover; filter: blur(1px) brightness(50%) saturate(80%);">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section style="background-color: rgba(13, 110, 253, 0.2);">
-            <div class="container py-5 border-bottom border-dark border-2">
-                <div class="container text-center my-5">
-                    <h2><strong>Nossos diferenciais</strong></h2>
-                </div>
-                <div class="row justify-content-center align-items-center text-center g-2">
-                    <div class="col-sm-4">
-                        <img src="/imagens/icons/low-price.png" alt="" class="img-fluid mb-3" style="width: 20%;">
-                        <p>Menor média de preço do segmento no Espirito Santo</p>
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="/imagens/icons/24-7.png" alt="" class="img-fluid mb-3" style="width: 20%;">
-                        <p>Atendimento 24/7</p>
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="/imagens/icons/ready-stock.png" alt="" class="img-fluid mb-3" style="width: 20%;">
-                        <p>Estoque próprio</p>
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="/imagens/icons/electronic-devices.png" alt="" class="img-fluid mb-3"
-                            style="width: 20%;">
-                        <p>Cadastro automatizado</p>
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="/imagens/icons/forklift_9199817.png" alt="" class="img-fluid mb-3"
-                            style="width: 20%;">
-                        <p>Abastecimento inteligente, sem
-                            dia fixo, até nos finais de semana</p>
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="/imagens/icons/padlock.png" alt="" class="img-fluid mb-3" style="width: 17%;">
-                        <p>Seguro contra incêndio e
-                            responsabilidade cívil</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section style="background-color: rgba(255, 0, 255, 0.2);">
-            <div class="container py-5 border-bottom border-dark border-2">
-                <div class="row justify-content-center align-items-center g-2 mt-3 py-3 bg-primary">
-                    <div class="col text-center text-light p-5">
-                        <h2>Não perca essa oportunidade!</h2>
-                        <p>
-                            Clique no botão abaixo e leve para seu condomínio um ambiente com tecnologia de ponta,
-                            segurança e
-                            preços justos!
+
+        <!-- Content Section -->
+        <section class="content-section" id="saibamais">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-7">
+                        <h2 class="content-title">Mais praticidade no seu dia a dia. Conheça o Market ES!</h2>
+                        <p class="content-text">
+                            Imagine ter um mercado completo à sua disposição, 24 horas por dia, sem precisar enfrentar filas ou o trânsito caótico da cidade. No Market ES, a experiência de compra é única e personalizada. Com uma variedade incrível de produtos, desde alimentos frescos e orgânicos até itens de última geração, você encontra tudo o que precisa para o seu dia a dia, e muito mais. Esqueça a rotina cansativa de ir ao supermercado e descubra a praticidade de ter um mercado completo no seu próprio condomínio.
                         </p>
-                        <button type="button" class="btn btn-outline-light" style="background-color: #eb00eb;"
-                            onclick="document.location='contato.html'">
-                            Clique aqui!
-                        </button>
+                        <a href="sobre.html" class="btn btn-gradient">Saiba mais sobre nossa empresa!</a>
+                    </div>
+                    <div class="col-lg-5">
+                        <img src="/imagens/renan.jpg" alt="Market ES" class="img-fluid content-image">
                     </div>
                 </div>
             </div>
         </section>
-        <section>
-            <div class="container my-5">
-                <h2>FAQ</h2>
-                <div class="accordion accordion-flush" id="accordionFlushExample bg-primary-subtle">
-                    <div class="accordion-item border border-bottom-0 border-primary">
-                        <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseOne" aria-expanded="true"
-                                aria-controls="flush-collapseOne">
-                                <h3>Como é o acesso à loja?</h3>
-                            </button>
-                        </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample"
-                            style="background-color: rgba(255, 0, 255, 0.24);">
-                            <div class="accordion-body">
-                                <p>
-                                    Cadastro: <br>
-                                    1- Baixe o nosso aplicativo <br>
-                                    2- Crie sua conta confirmando e-mail e telefone <br>
-                                </p>
-                            </div>
-                            <div class="accordion-body">
-                                <p>
-                                    1° Acesso: <br>
-                                    1- Leia o QR-code na porta <br>
-                                    2- Confirme CPF e idade <br>
-                                    3- Crie o seu código de acesso <br>
-                                    4- Desbloqueie a porta <br>
-                                </p>
-                            </div>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="container">
+                <h2 class="section-title">Nossos diferenciais</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <img src="/imagens/icons/low-price.png" alt="Preço baixo" class="feature-icon">
+                            <p class="feature-text">Menor média de preço do segmento no Espírito Santo</p>
                         </div>
                     </div>
-                    <div class="accordion-item border border-bottom-0 border-primary">
-                        <h2 class="accordion-header" id="flush-headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseTwo" aria-expanded="true"
-                                aria-controls="flush-collapseTwo">
-                                <h3>E se ocorrer problema no pagamento?</h3>
-                            </button>
-                        </h2>
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample"
-                            style="background-color: rgba(255, 0, 255, 0.24);">
-                            <div class="accordion-body">
-                                <p>
-                                    1- Entre em contato com o nosso suporte
-                                    informando o erro ocorrido (o telefone
-                                    estará de fácil visualização na loja). <br>
-                                    2- Leve o produto com você. <br>
-                                    3- Nossa equipe irá lhe orientar da
-                                    melhor forma, para regularizar o débito. <br>
-                                </p>
-                            </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <img src="/imagens/icons/24-7.png" alt="24/7" class="feature-icon">
+                            <p class="feature-text">Atendimento 24/7</p>
                         </div>
                     </div>
-                    <div class="accordion-item border border-bottom-0 border-primary">
-                        <h2 class="accordion-header" id="flush-headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseThree" aria-expanded="true"
-                                aria-controls="flush-collapseThree">
-                                <h3>Em caso de atividade suspeita ou possível furto?</h3>
-                            </button>
-                        </h2>
-                        <div id="flush-collapseThree" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body" style="background-color: rgba(255, 0, 255, 0.24);">
-                                <p>
-                                    A Market ES possui sistema
-                                    inteligente de monitoramento
-                                    24h. Em caso de atividade
-                                    fraudulenta, o contato exclusivo
-                                    com o responsável pelo ato,
-                                    podendo ser regularizado em até
-                                    72horas.
-                                </p>
-                            </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <img src="/imagens/icons/ready-stock.png" alt="Estoque" class="feature-icon">
+                            <p class="feature-text">Estoque próprio</p>
                         </div>
                     </div>
-                    <div class="accordion-item border border-bottom border-primary">
-                        <h2 class="accordion-header" id="flush-headingFour">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseFour" aria-expanded="true"
-                                aria-controls="flush-collapseFour">
-                                <h3>Como funciona o pagamento?</h3>
-                            </button>
-                        </h2>
-                        <div id="flush-collapseFour" class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body" style="background-color: rgba(255, 0, 255, 0.24);">
-                                <p>
-                                    Pagamento por Totem! Sem
-                                    necessidade de cadastro de cartão <br>
-                                    Aceita os principais cartões de crédito,
-                                    débito, pix e Ticket Alimentação! <br>
-                                </p>
-                            </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <img src="/imagens/icons/electronic-devices.png" alt="Cadastro" class="feature-icon">
+                            <p class="feature-text">Cadastro automatizado</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <img src="/imagens/icons/forklift_9199817.png" alt="Abastecimento" class="feature-icon">
+                            <p class="feature-text">Abastecimento inteligente, sem dia fixo, até nos finais de semana</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <img src="/imagens/icons/padlock.png" alt="Segurança" class="feature-icon">
+                            <p class="feature-text">Seguro contra incêndio e responsabilidade civil</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <footer>
-            <div class="container-fluid py-2" style="background-color: #020203;">
-                <div class="container text-light">
-                    <div class="row justify-content-center align-items-center text-center g-2 my-2">
-                        <div class="col-sm-3">
-                            <h4>Precisa de ajuda?</h4>
-                            <p class="mb-2">Contacte-nos pelos nossos links:</p>
-                            <a href="https://www.instagram.com/marketes.conveniencia/"
-                                class="text-decoration-none link-light"><i class="bi bi-instagram me-2"></i></a>
-                            <a href="https://api.whatsapp.com/send?phone=5527998851990&text=Oi,%20estou%20interessado%20no%20mercadinho!"
-                                class="text-decoration-none link-light"> <i class="bi bi-whatsapp me-2"></i></a>
-                            <a href="mailto:marketes.conveniencia@gmail.com" class="text-decoration-none link-light"><i
-                                    class="bi bi-envelope-at"></i></a>
-                        </div>
-                    </div>
-                    <hr>
-                    <p class="m-0 text-center">&copy; 2024 MarketES</p>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-box">
+                    <h2 class="cta-title">Não perca essa oportunidade!</h2>
+                    <p class="cta-text">
+                        Clique no botão abaixo e leve para seu condomínio um ambiente com tecnologia de ponta, segurança e preços justos!
+                    </p>
+                    <button class="btn btn-cta" onclick="location.href='contato.html'">Clique aqui!</button>
                 </div>
             </div>
-        </footer>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">FAQ</h2>
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                Como é o acesso à loja?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p><strong>Cadastro:</strong><br>
+                                1- Baixe o nosso aplicativo<br>
+                                2- Crie sua conta confirmando e-mail e telefone</p>
+                                <p><strong>1° Acesso:</strong><br>
+                                1- Leia o QR-code na porta<br>
+                                2- Confirme CPF e idade<br>
+                                3- Crie o seu código de acesso<br>
+                                4- Desbloqueie a porta</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                E se ocorrer problema no pagamento?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>
+                                    1- Entre em contato com o nosso suporte informando o erro ocorrido (o telefone estará de fácil visualização na loja).<br>
+                                    2- Leve o produto com você.<br>
+                                    3- Nossa equipe irá lhe orientar da melhor forma, para regularizar o débito.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                Em caso de atividade suspeita ou possível furto?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>
+                                    A Market ES possui sistema inteligente de monitoramento 24h. Em caso de atividade fraudulenta, o contato exclusivo com o responsável pelo ato, podendo ser regularizado em até 72 horas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                Como funciona o pagamento?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                <p>
+                                    Pagamento por Totem! Sem necessidade de cadastro de cartão<br>
+                                    Aceita os principais cartões de crédito, débito, pix e Ticket Alimentação!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-md-6">
+                    <h4>Precisa de ajuda?</h4>
+                    <p class="mb-3">Contacte-nos pelos nossos links:</p>
+                    <a href="https://www.instagram.com/marketes.conveniencia/" class="me-3"><i class="bi bi-instagram"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=5527998851990&text=Oi,%20estou%20interessado%20no%20mercadinho!" class="me-3"><i class="bi bi-whatsapp"></i></a>
+                    <a href="mailto:marketes.conveniencia@gmail.com"><i class="bi bi-envelope-at"></i></a>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+            <p class="text-center mb-0">&copy; 2024 MarketES</p>
+        </div>
+    </footer>
 </body>
 
 </html>
