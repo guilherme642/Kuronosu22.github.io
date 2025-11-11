@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MarketES - Início</title>
+    <title>MarketES - Minimercado 24h para seu Condomínio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="/imagens/icons/favicon.ico" type="image/x-icon">
     <style>
         :root {
-            --primary-blue: #0093D4;
-            --primary-magenta: #E91E8C;
-            --dark-bg: #000000;
-            --light-bg: #FFFFFF;
-            --text-dark: #1a1a1a;
-            --text-light: #666666;
-            --gradient-primary: linear-gradient(135deg, #0093D4 0%, #E91E8C 100%);
-            --gradient-overlay: linear-gradient(135deg, rgba(0, 147, 212, 0.85) 0%, rgba(233, 30, 140, 0.85) 100%);
+            --preto-principal: #000000;
+            --preto-texto: #1a1a1a;
+            --cinza-claro: #f8f9fa;
+            --cinza-medio: #666666;
+            --azul-primario: #0b5ed7;
+            --azul-escuro: #0a4da3;
+            --rosa-destaque: #ec008c;
+            --rosa-hover: #c4006f;
+            --gradiente-hero: linear-gradient(135deg, rgba(11, 94, 215, 0.85) 0%, rgba(236, 0, 140, 0.85) 100%);
         }
 
         * {
@@ -32,21 +30,24 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            color: var(--text-dark);
+            color: var(--preto-texto);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         /* Navbar */
         .navbar-custom {
-            background: var(--dark-bg);
+            background: var(--preto-principal);
             padding: 1rem 0;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .navbar-custom .nav-link {
-            color: var(--light-bg) !important;
+            color: white !important;
             font-weight: 500;
-            font-size: 1rem;
             padding: 0.5rem 1.5rem !important;
             transition: all 0.3s ease;
             position: relative;
@@ -59,7 +60,7 @@
             left: 50%;
             width: 0;
             height: 2px;
-            background: var(--gradient-primary);
+            background: var(--rosa-destaque);
             transition: all 0.3s ease;
             transform: translateX(-50%);
         }
@@ -68,13 +69,14 @@
             width: 80%;
         }
 
-        /* Hero Section */
+        /* Hero Duplo */
         .hero-section {
             position: relative;
-            min-height: 85vh;
+            min-height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: var(--preto-principal);
             overflow: hidden;
         }
 
@@ -85,7 +87,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.4);
+            filter: brightness(0.3);
         }
 
         .hero-overlay {
@@ -94,8 +96,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--gradient-overlay);
-            opacity: 0.7;
+            background: var(--gradiente-hero);
+            opacity: 0.8;
         }
 
         .hero-content {
@@ -104,198 +106,431 @@
             text-align: center;
             color: white;
             padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .hero-title {
-            font-size: clamp(2rem, 5vw, 4rem);
+            font-size: clamp(2.2rem, 5vw, 4rem);
             font-weight: 800;
             line-height: 1.2;
-            margin-bottom: 2rem;
-            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
         }
 
-        .gradient-text {
-            background: linear-gradient(135deg, #00D4FF 0%, #FF00FF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero-title .highlight {
+            color: #ffeb3b;
+            font-weight: 900;
         }
 
-        .btn-gradient {
-            background: var(--gradient-primary);
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta-primary {
+            background: var(--azul-primario);
             color: white;
             border: none;
-            padding: 1rem 3rem;
-            font-size: 1.2rem;
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
             font-weight: 600;
             border-radius: 50px;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 147, 212, 0.3);
+            box-shadow: 0 6px 20px rgba(11, 94, 215, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .btn-gradient:hover {
+        .btn-cta-primary:hover {
+            background: var(--azul-escuro);
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 147, 212, 0.5);
+            box-shadow: 0 8px 25px rgba(11, 94, 215, 0.6);
             color: white;
         }
 
-        /* Logo Section */
-        .logo-section {
-            background: var(--dark-bg);
-            padding: 3rem 0;
-        }
-
-        /* Content Section */
-        .content-section {
-            padding: 6rem 0;
-            background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
-        }
-
-        .content-title {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--text-dark);
-            line-height: 1.3;
-        }
-
-        .content-text {
+        .btn-cta-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--rosa-destaque);
+            padding: 1.2rem 3rem;
             font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-light);
-            margin-bottom: 2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .content-image {
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease;
+        .btn-cta-secondary:hover {
+            background: var(--rosa-destaque);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(236, 0, 140, 0.6);
         }
 
-        .content-image:hover {
-            transform: scale(1.02);
-        }
-
-        /* Features Section */
-        .features-section {
-            padding: 6rem 0;
+        /* Prova Social */
+        .prova-social {
             background: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .prova-social h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--preto-texto);
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--azul-primario);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--cinza-medio);
+            margin-top: 0.5rem;
+        }
+
+        .logos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .logo-partner {
+            height: 50px;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .logo-partner:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Seção Para Síndicos */
+        .para-sindicos {
+            background: var(--preto-principal);
+            color: white;
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
 
         .section-title {
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 700;
-            text-align: center;
-            margin-bottom: 4rem;
-            color: var(--text-dark);
+            margin-bottom: 1rem;
         }
 
-        .feature-card {
-            text-align: center;
-            padding: 2rem 1rem;
-            transition: transform 0.3s ease;
+        .section-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
         }
 
-        .feature-text {
-            font-size: 1rem;
-            color: var(--text-light);
+        .benefit-card:hover {
+            border-color: var(--rosa-destaque);
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            color: var(--rosa-destaque);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-text {
+            opacity: 0.8;
             line-height: 1.6;
         }
 
-        /* CTA Section */
-        .cta-section {
-            padding: 6rem 0;
-            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
-        }
-
-        .cta-box {
-            background: var(--gradient-primary);
-            border-radius: 30px;
-            padding: 4rem 2rem;
-            text-align: center;
+        /* Seção Para Moradores */
+        .para-moradores {
+            background: var(--azul-primario);
             color: white;
-            box-shadow: 0 20px 60px rgba(0, 147, 212, 0.3);
+            padding: 6rem 0;
         }
 
-        .cta-title {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+        .feature-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .feature-image {
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            height: auto;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: #ffeb3b;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* Portfólio */
+        .portfolio {
+            background: white;
+            padding: 6rem 0;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--preto-texto);
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-location {
+            color: var(--cinza-medio);
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-quote {
+            font-style: italic;
+            color: var(--cinza-medio);
+            border-left: 3px solid var(--rosa-destaque);
+            padding-left: 1rem;
+        }
+
+        /* Como Funciona */
+        .como-funciona {
+            background: linear-gradient(180deg, var(--preto-principal) 0%, #1a1a2e 100%);
+            color: white;
+            padding: 6rem 0;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--rosa-destaque);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .step-text {
+            opacity: 0.9;
+        }
+
+        /* Diferenciais */
+        .diferenciais {
+            background: white;
+            padding: 6rem 0;
+        }
+
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .diferencial-card {
+            text-align: center;
+            padding: 2rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .diferencial-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .diferencial-icon {
+            font-size: 4rem;
+            color: var(--azul-primario);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .diferencial-card:hover .diferencial-icon {
+            color: var(--rosa-destaque);
+        }
+
+        .diferencial-text {
+            color: var(--cinza-medio);
+            line-height: 1.6;
+        }
+
+        /* CTA Final */
+        .cta-final {
+            background: linear-gradient(135deg, var(--azul-primario) 0%, var(--rosa-destaque) 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .cta-final h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 700;
             margin-bottom: 1.5rem;
         }
 
-        .cta-text {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+        .cta-final p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
             opacity: 0.95;
         }
 
-        .btn-cta {
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta-white {
             background: white;
-            color: var(--primary-blue);
-            padding: 1rem 3rem;
+            color: var(--azul-primario);
+            border: none;
+            padding: 1.2rem 3rem;
             font-size: 1.1rem;
             font-weight: 600;
             border-radius: 50px;
-            border: none;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .btn-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        .btn-cta-white:hover {
             background: #f0f0f0;
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            padding: 6rem 0;
-            background: white;
-        }
-
-        .accordion-item {
-            border: 2px solid #e0e0e0;
-            border-radius: 15px !important;
-            margin-bottom: 1rem;
-            overflow: hidden;
-        }
-
-        .accordion-button {
-            background: white;
-            font-weight: 600;
-            font-size: 1.1rem;
-            padding: 1.5rem;
-            color: var(--text-dark);
-        }
-
-        .accordion-button:not(.collapsed) {
-            background: linear-gradient(135deg, rgba(0, 147, 212, 0.1) 0%, rgba(233, 30, 140, 0.1) 100%);
-            color: var(--primary-blue);
-        }
-
-        .accordion-button:focus {
-            box-shadow: none;
-            border-color: var(--primary-blue);
-        }
-
-        .accordion-body {
-            padding: 1.5rem;
-            background: #f8f9fa;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
         /* Footer */
         .footer {
-            background: var(--dark-bg);
+            background: var(--preto-principal);
             color: white;
             padding: 3rem 0 1rem;
         }
@@ -309,10 +544,11 @@
             color: white;
             font-size: 1.5rem;
             transition: all 0.3s ease;
+            margin: 0 0.5rem;
         }
 
         .footer a:hover {
-            color: var(--primary-blue);
+            color: var(--rosa-destaque);
             transform: scale(1.1);
         }
 
@@ -322,232 +558,374 @@
                 font-size: 2rem;
             }
 
-            .content-section {
-                padding: 3rem 0;
+            .hero-ctas {
+                flex-direction: column;
             }
 
-            .features-section,
-            .cta-section,
-            .faq-section {
-                padding: 3rem 0;
+            .feature-content {
+                grid-template-columns: 1fr;
             }
+
+            .btn-cta-primary,
+            .btn-cta-secondary,
+            .btn-cta-white {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.8s ease;
         }
     </style>
 </head>
-
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="/imagens/logofull.png" alt="MarketES" style="width: 200px;">
+            <a class="navbar-brand" href="#home">
+                <img src="/imagens/logofull.png" alt="MarketES" style="width: 180px;">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="background: white;">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Início</a>
+                        <a class="nav-link" href="#home">Início</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="sobre.html">Sobre</a>
+                        <a class="nav-link" href="#portfolio">Cases</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contato.html">Contato</a>
+                        <a class="nav-link" href="#como-funciona">Como Funciona</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <img class="hero-bg" src="/imagens/delivery-woman-with-food-package.jpg" alt="Hero Background">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    O mini-mercado mais tecnológico do<br>
-                    <span class="gradient-text">Espírito Santo</span>
-                </h1>
-                <a href="#saibamais" class="btn btn-gradient">Quero saber mais</a>
+    <!-- Hero Duplo -->
+    <section class="hero-section" id="home">
+        <img class="hero-bg" src="/imagens/delivery-woman-with-food-package.jpg" alt="MarketES">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Leve um Minimercado 24h para seu Condomínio.<br>
+                <span class="highlight">Zero Investimento.</span>
+            </h1>
+            <p class="hero-subtitle">
+                Comodidade para moradores. Valorização para o empreendimento.<br>
+                A solução mais inteligente de varejo autônomo do Espírito Santo.
+            </p>
+            <div class="hero-ctas">
+                <a href="#para-sindicos" class="btn-cta-primary">
+                    <i class="bi bi-building"></i> Sou Síndico/Administradora
+                </a>
+                <a href="#para-moradores" class="btn-cta-secondary">
+                    <i class="bi bi-house-door"></i> Sou Morador
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Logo Section -->
-        <section class="logo-section">
-            <div class="container text-center">
-                <img src="/imagens/logofull.png" alt="MarketES Logo" class="img-fluid" style="max-width: 400px;">
+    <!-- Prova Social -->
+    <section class="prova-social">
+        <div class="container">
+            <h2>Já confiamos no futuro do varejo</h2>
+            <div class="logos-container">
+                <span style="font-weight: 600; color: var(--cinza-medio);">Parceiros:</span>
+                <span style="color: var(--cinza-medio);">Heineken • Ambev • Nestlé • Coca-Cola • BRF • Unilever</span>
             </div>
-        </section>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Unidades Ativas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Disponível para Morador</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">R$ 0</div>
+                    <div class="stat-label">Investimento do Condomínio</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Content Section -->
-        <section class="content-section" id="saibamais">
-            <div class="container">
-                <div class="row align-items-center g-5">
-                    <div class="col-lg-7">
-                        <h2 class="content-title">Mais praticidade no seu dia a dia. Conheça o Market ES!</h2>
-                        <p class="content-text">
-                            Imagine ter um mercado completo à sua disposição, 24 horas por dia, sem precisar enfrentar filas ou o trânsito caótico da cidade. No Market ES, a experiência de compra é única e personalizada. Com uma variedade incrível de produtos, desde alimentos frescos e orgânicos até itens de última geração, você encontra tudo o que precisa para o seu dia a dia, e muito mais. Esqueça a rotina cansativa de ir ao supermercado e descubra a praticidade de ter um mercado completo no seu próprio condomínio.
-                        </p>
-                        <a href="sobre.html" class="btn btn-gradient">Saiba mais sobre nossa empresa!</a>
+    <!-- Para Síndicos -->
+    <section class="para-sindicos" id="para-sindicos">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">🏢</div>
+                <h2 class="section-title">Por que seu condomínio precisa?</h2>
+                <p class="section-subtitle">Benefícios exclusivos para gestores e proprietários</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="bi bi-cash-coin"></i></div>
+                    <h3 class="benefit-title">Zero Custo</h3>
+                    <p class="benefit-text">Sem investimento em instalação, manutenção ou abastecimento. Tudo por nossa conta.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                    <h3 class="benefit-title">Valorização do Imóvel</h3>
+                    <p class="benefit-text">Diferenciais como este aumentam a atratividade e valor de mercado do empreendimento.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="bi bi-shield-check"></i></div>
+                    <h3 class="benefit-title">Seguro Incluso</h3>
+                    <p class="benefit-text">Cobertura completa contra incêndio e responsabilidade civil. Sua tranquilidade garantida.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="bi bi-camera-video"></i></div>
+                    <h3 class="benefit-title">Monitoramento 24h</h3>
+                    <p class="benefit-text">Sistema inteligente com IA para prevenção de fraudes e segurança total.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#contato" class="btn-cta-secondary" style="border-color: var(--rosa-destaque); color: white;">
+                    <i class="bi bi-file-earmark-text"></i> Solicitar Proposta sem Compromisso
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Para Moradores -->
+    <section class="para-moradores" id="para-moradores">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">🏠</div>
+                <h2 class="section-title">Sua vida mais prática</h2>
+                <p class="section-subtitle">Compre o que precisa, quando precisa. Sem sair de casa.</p>
+            </div>
+            <div class="feature-content">
+                <div>
+                    <img src="/imagens/renan.jpg" alt="App MarketES" class="feature-image">
+                </div>
+                <div>
+                    <ul class="feature-list">
+                        <li>Sem sair do pijama às 23h - a loja está sempre aberta no seu prédio</li>
+                        <li>Preços até 15% menores que delivery tradicional</li>
+                        <li>Pagamento no totem - aceitamos cartão, PIX e Ticket Alimentação</li>
+                        <li>+500 itens sempre disponíveis - de snacks a produtos de higiene</li>
+                        <li>Cadastro automático e rápido - sua primeira compra em menos de 3 minutos</li>
+                    </ul>
+                    <a href="#como-funciona" class="btn-cta-white" style="margin-top: 2rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+                        <i class="bi bi-play-circle"></i> Ver Como Funciona
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfólio -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header" style="color: var(--preto-texto);">
+                <h2 class="section-title">Onde já estamos transformando vidas</h2>
+                <p class="section-subtitle" style="color: var(--cinza-medio);">Cases de sucesso pelo Espírito Santo</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <img src="/imagens/sobre.jpg" alt="Condomínio Vitória" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Condomínio Jardim Camburi</h3>
+                        <p class="portfolio-location"><i class="bi bi-geo-alt"></i> Vitória, ES</p>
+                        <p class="portfolio-quote">"Desde que instalaram, não preciso mais ir ao mercado toda semana. É uma comodidade incrível!" - Maria S., moradora</p>
                     </div>
-                    <div class="col-lg-5">
-                        <img src="/imagens/renan.jpg" alt="Market ES" class="img-fluid content-image">
+                </div>
+                <div class="portfolio-card">
+                    <img src="/imagens/sobre.jpg" alt="Condomínio Vila Velha" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Residencial Praia da Costa</h3>
+                        <p class="portfolio-location"><i class="bi bi-geo-alt"></i> Vila Velha, ES</p>
+                        <p class="portfolio-quote">"Valorizou nosso empreendimento e os moradores adoram. Foi a melhor decisão que tomamos." - João P., Síndico</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <img src="/imagens/sobre.jpg" alt="Condomínio Serra" class="portfolio-image">
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Edifício Corporate Center</h3>
+                        <p class="portfolio-location"><i class="bi bi-geo-alt"></i> Serra, ES</p>
+                        <p class="portfolio-quote">"A praticidade de ter um mercado 24h no prédio comercial aumentou a satisfação dos colaboradores." - Ana L., Administradora</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Features Section -->
-        <section class="features-section">
-            <div class="container">
+    <!-- Como Funciona -->
+    <section class="como-funciona" id="como-funciona">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">3 passos para sua primeira compra</h2>
+                <p class="section-subtitle">Simples, rápido e seguro</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Baixe o App</h3>
+                    <p class="step-text">Disponível para iOS e Android. Cadastro em menos de 2 minutos.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Confirme seu CPF</h3>
+                    <p class="step-text">Leia o QR-code na porta da loja e valide sua identidade.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Compre 24h!</h3>
+                    <p class="step-text">Pegue o que precisa e pague no totem. Sem filas, sem complicação.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section class="diferenciais">
+        <div class="container">
+            <div class="section-header" style="color: var(--preto-texto);">
                 <h2 class="section-title">Nossos diferenciais</h2>
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <div class="feature-card">
-                            <img src="/imagens/icons/low-price.png" alt="Preço baixo" class="feature-icon">
-                            <p class="feature-text">Menor média de preço do segmento no Espírito Santo</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="feature-card">
-                            <img src="/imagens/icons/24-7.png" alt="24/7" class="feature-icon">
-                            <p class="feature-text">Atendimento 24/7</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="feature-card">
-                            <img src="/imagens/icons/ready-stock.png" alt="Estoque" class="feature-icon">
-                            <p class="feature-text">Estoque próprio</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="feature-card">
-                            <img src="/imagens/icons/electronic-devices.png" alt="Cadastro" class="feature-icon">
-                            <p class="feature-text">Cadastro automatizado</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="feature-card">
-                            <img src="/imagens/icons/forklift_9199817.png" alt="Abastecimento" class="feature-icon">
-                            <p class="feature-text">Abastecimento inteligente, sem dia fixo, até nos finais de semana</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="feature-card">
-                            <img src="/imagens/icons/padlock.png" alt="Segurança" class="feature-icon">
-                            <p class="feature-text">Seguro contra incêndio e responsabilidade civil</p>
-                        </div>
-                    </div>
+            </div>
+            <div class="diferenciais-grid">
+                <div class="diferencial-card">
+                    <div class="diferencial-icon"><i class="bi bi-tag"></i></div>
+                    <p class="diferencial-text">Menor média de preço do segmento no Espírito Santo</p>
+                </div>
+                <div class="diferencial-card">
+                    <div class="diferencial-icon"><i class="bi bi-clock"></i></div>
+                    <p class="diferencial-text">Atendimento 24/7</p>
+                </div>
+                <div class="diferencial-card">
+                    <div class="diferencial-icon"><i class="bi bi-box-seam"></i></div>
+                    <p class="diferencial-text">Estoque próprio sempre abastecido</p>
+                </div>
+                <div class="diferencial-card">
+                    <div class="diferencial-icon"><i class="bi bi-phone"></i></div>
+                    <p class="diferencial-text">Cadastro automatizado via app</p>
+                </div>
+                <div class="diferencial-card">
+                    <div class="diferencial-icon"><i class="bi bi-truck"></i></div>
+                    <p class="diferencial-text">Abastecimento inteligente até nos finais de semana</p>
+                </div>
+                <div class="diferencial-card">
+                    <div class="diferencial-icon"><i class="bi bi-shield-lock"></i></div>
+                    <p class="diferencial-text">Seguro contra incêndio e responsabilidade civil</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="container">
-                <div class="cta-box">
-                    <h2 class="cta-title">Não perca essa oportunidade!</h2>
-                    <p class="cta-text">
-                        Clique no botão abaixo e leve para seu condomínio um ambiente com tecnologia de ponta, segurança e preços justos!
-                    </p>
-                    <button class="btn btn-cta" onclick="location.href='contato.html'">Clique aqui!</button>
-                </div>
+    <!-- CTA Final -->
+    <section class="cta-final" id="contato">
+        <div class="container">
+            <h2>Pronto para transformar seu condomínio?</h2>
+            <p>Solicite uma proposta personalizada sem compromisso ou agende uma visita para conhecer nossa loja em funcionamento.</p>
+            <div class="cta-buttons">
+                <a href="contato.html" class="btn-cta-white">
+                    <i class="bi bi-file-earmark-text"></i> Solicitar Proposta
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=5527998851990&text=Oi,%20quero%20agendar%20uma%20visita!" class="btn-cta-secondary" style="background: transparent; border-color: white; color: white;">
+                    <i class="bi bi-whatsapp"></i> Agendar Visita
+                </a>
             </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="faq-section">
-            <div class="container">
-                <h2 class="section-title">FAQ</h2>
-                <div class="accordion" id="faqAccordion">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                Como é o acesso à loja?
-                            </button>
-                        </h2>
-                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p><strong>Cadastro:</strong><br>
-                                1- Baixe o nosso aplicativo<br>
-                                2- Crie sua conta confirmando e-mail e telefone</p>
-                                <p><strong>1° Acesso:</strong><br>
-                                1- Leia o QR-code na porta<br>
-                                2- Confirme CPF e idade<br>
-                                3- Crie o seu código de acesso<br>
-                                4- Desbloqueie a porta</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                E se ocorrer problema no pagamento?
-                            </button>
-                        </h2>
-                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p>
-                                    1- Entre em contato com o nosso suporte informando o erro ocorrido (o telefone estará de fácil visualização na loja).<br>
-                                    2- Leve o produto com você.<br>
-                                    3- Nossa equipe irá lhe orientar da melhor forma, para regularizar o débito.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                Em caso de atividade suspeita ou possível furto?
-                            </button>
-                        </h2>
-                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p>
-                                    A Market ES possui sistema inteligente de monitoramento 24h. Em caso de atividade fraudulenta, o contato exclusivo com o responsável pelo ato, podendo ser regularizado em até 72 horas.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                                Como funciona o pagamento?
-                            </button>
-                        </h2>
-                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p>
-                                    Pagamento por Totem! Sem necessidade de cadastro de cartão<br>
-                                    Aceita os principais cartões de crédito, débito, pix e Ticket Alimentação!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="row justify-content-center text-center">
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <h4>Precisa de ajuda?</h4>
-                    <p class="mb-3">Contacte-nos pelos nossos links:</p>
-                    <a href="https://www.instagram.com/marketes.conveniencia/" class="me-3"><i class="bi bi-instagram"></i></a>
-                    <a href="https://api.whatsapp.com/send?phone=5527998851990&text=Oi,%20estou%20interessado%20no%20mercadinho!" class="me-3"><i class="bi bi-whatsapp"></i></a>
-                    <a href="mailto:marketes.conveniencia@gmail.com"><i class="bi bi-envelope-at"></i></a>
+                    <p class="mb-3">Contacte-nos pelos nossos canais:</p>
+                    <div>
+                        <a href="https://www.instagram.com/marketes.conveniencia/" target="_blank" rel="noopener">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://api.whatsapp.com/send?phone=5527998851990&text=Oi,%20estou%20interessado%20no%20mercadinho!" target="_blank" rel="noopener">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                        <a href="mailto:marketes.conveniencia@gmail.com">
+                            <i class="bi bi-envelope-at"></i>
+                        </a>
+                    </div>
+                    <div style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.7;">
+                        <p>MarketES - Varejo Autônomo Inteligente</p>
+                        <p>Operando desde outubro de 2022 no Espírito Santo</p>
+                    </div>
                 </div>
             </div>
             <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
-            <p class="text-center mb-0">&copy; 2024 MarketES</p>
+            <p class="text-center mb-0">&copy; 2024 MarketES. Todos os direitos reservados.</p>
         </div>
     </footer>
-</body>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animação ao scroll (fade in)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-on-scroll');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.benefit-card, .step-card, .portfolio-card, .diferencial-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Tracking de CTAs (adaptar para seu analytics)
+        document.querySelectorAll('.btn-cta-primary').forEach(btn => {
+            btn.addEventListener('click', () => {
+                console.log('CTA Clicked: Síndico');
+                // gtag('event', 'click', { event_category: 'CTA', event_label: 'Sindico' });
+            });
+        });
+
+        document.querySelectorAll('.btn-cta-secondary').forEach(btn => {
+            btn.addEventListener('click', () => {
+                console.log('CTA Clicked: Morador');
+                // gtag('event', 'click', { event_category: 'CTA', event_label: 'Morador' });
+            });
+        });
+    </script>
+</body>
 </html>
