@@ -1,0 +1,707 @@
+/* Importação da Fonte */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ============================================
+   REATORAÇÃO - PALETA DE CORES DO CLIENTE
+   ============================================
+*/
+:root {
+    /* Cores Mandatórias */
+    --cor-principal-azul: #0b5ed7; /* O azul primário do Bootstrap, como pedido */
+    --cor-destaque-rosa: #ec008c;
+    --cor-preto: #212529; /* Um "preto" suave (bg-dark do Bootstrap) */
+    --cor-preto-absoluto: #000000;
+    --cor-branco: #FFFFFF;
+    --cor-cinza-claro: #f8f9fa;
+    --cor-texto-escuro: #1a1a1a;
+    --cor-texto-claro: #adb5bd; /* Cinza claro para texto sobre fundo escuro */
+
+    /* Variáveis de Design (Substituindo gradientes) */
+    --cor-fundo-principal: var(--cor-preto-absoluto);
+    --cor-navbar: var(--cor-preto);
+    --cor-footer: var(--cor-preto);
+    --cor-texto-principal: var(--cor-branco);
+    --cor-texto-secundario: var(--cor-texto-claro);
+
+    /* Variaveis de Modernização */
+    --sombra-moderna-suave: 0 10px 30px rgba(0, 0, 0, 0.07);
+    --sombra-moderna-media: 0 15px 40px rgba(0, 0, 0, 0.1);
+    --transicao-padrao: all 0.3s ease;
+    --border-radius-moderno: 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Animação de Fade-In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--cor-texto-escuro); /* Cor padrão para seções claras */
+    overflow-x: hidden;
+    background-color: var(--cor-cinza-claro); /* Fundo geral claro */
+    line-height: 1.6; /* Melhora legibilidade */
+}
+
+/* Animação aplicada às seções */
+section {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* ============================================
+   SEÇÕES ESCURAS (Tema Preto/Azul)
+   ============================================
+*/
+.bg-dark-section {
+    background-color: var(--cor-fundo-principal) !important;
+    color: var(--cor-texto-principal);
+}
+
+.bg-dark-section .section-title,
+.bg-dark-section h1,
+.bg-dark-section h2,
+.bg-dark-section h3,
+.bg-dark-section p {
+    color: var(--cor-texto-principal);
+}
+
+.bg-dark-section p:not(.lead) {
+    color: var(--cor-texto-secundario);
+}
+
+/* Títulos */
+.section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4rem;
+    color: var(--cor-texto-escuro);
+}
+
+/* ============================================
+   BOTÕES (Azul e Rosa)
+   ============================================
+*/
+
+/* Botão Principal (Azul) */
+.btn-azul-primary {
+    background-color: var(--cor-principal-azul);
+    border-color: var(--cor-principal-azul);
+    color: white;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: var(--transicao-padrao);
+    box-shadow: 0 4px 15px rgba(11, 94, 215, 0.25); /* Sombra mais suave */
+}
+
+.btn-azul-primary:hover,
+.btn-azul-primary:focus {
+    background-color: #0a58ca; /* Azul mais escuro */
+    border-color: #0a58ca;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(11, 94, 215, 0.4); /* Sombra mais forte no hover */
+}
+
+/* Botão CTA (Rosa) - "Uso moderado" */
+.btn-cta-rosa {
+    background-color: var(--cor-destaque-rosa);
+    border-color: var(--cor-destaque-rosa);
+    color: white;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: var(--transicao-padrao);
+    box-shadow: 0 4px 15px rgba(236, 0, 140, 0.25);
+}
+
+.btn-cta-rosa:hover,
+.btn-cta-rosa:focus {
+    background-color: #c90076; /* Rosa mais escuro */
+    border-color: #c90076;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(236, 0, 140, 0.4);
+}
+
+
+/* ============================================
+   COMPONENTES REATORADOS
+   ============================================
+*/
+
+/* --- Navbar --- */
+.navbar-custom {
+    background: var(--cor-navbar) !important;
+    padding: 1rem 0;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    transition: var(--transicao-padrao);
+}
+
+.navbar-custom .nav-link {
+    color: var(--cor-branco) !important;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem !important;
+    transition: var(--transicao-padrao);
+    position: relative;
+}
+
+/* Efeito hover azul na navbar */
+.navbar-custom .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--cor-principal-azul); /* Azul no hover */
+    transition: var(--transicao-padrao);
+    transform: translateX(-50%);
+}
+
+.navbar-custom .nav-link:hover::after {
+    width: 80%;
+}
+
+.navbar-custom .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* --- Hero Section --- */
+/* SUBSTITUA O BLOCO ACIMA POR ESTE */
+.hero-section {
+    position: relative;
+    min-height: 89vh; /* REDUZIDO DE 85vh PARA 75vh */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--cor-preto-absoluto);
+}
+
+/* Adicione a nova linha object-position */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: none;
+    object-position: center 70%; /* <--- ADICIONE ESTA LINHA */
+}
+
+/* MELHORIA: Overlay em gradiente */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradiente moderno: Inicia preto à esquerda (para texto) e vai para azul transparente à direita */
+    background: linear-gradient(90deg, var(--cor-preto-absoluto) 15%, rgba(0, 0, 0, 0.7) 40%, rgba(11, 94, 215, 0.3) 100%);
+    opacity: 0.9;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 2rem;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    /* Sombra no texto para destacar do fundo */
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
+}
+
+/* Texto de destaque azul */
+.text-highlight-blue {
+    color: var(--cor-principal-azul);
+    font-weight: 800;
+}
+
+/* --- Seção "Como Funciona" --- */
+.how-it-works-section {
+    padding: 6rem 0;
+}
+
+.step-card {
+    text-align: center;
+    padding: 2rem;
+    background: var(--cor-branco);
+    border-radius: var(--border-radius-moderno);
+    box-shadow: var(--sombra-moderna-suave);
+    height: 100%;
+    transition: var(--transicao-padrao);
+}
+
+/* MELHORIA: Efeito de hover no card */
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-moderna-media);
+}
+
+.step-icon {
+    font-size: 4rem; /* Tamanho do Bootstrap Icon */
+    color: var(--cor-principal-azul);
+    margin-bottom: 1.5rem;
+}
+
+.step-card h3 {
+    color: var(--cor-texto-escuro);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.step-card p {
+    color: #6c757d; /* Cor de texto mais suave */
+    line-height: 1.6;
+}
+
+
+/* ============================================
+   FIX: Carrossel Polido
+   ============================================
+*/
+.portfolio-section {
+    padding: 6rem 0;
+}
+/* SUBSTITUA O BLOCO ACIMA POR ESTE */
+.portfolio-carousel .carousel-item img {
+    /* Define uma altura máxima para a imagem não ficar gigante */
+    max-height: 600px;
+    
+    /* Força a largura a ser automática, mantendo a proporção */
+    /* O !important anula o "w-100" do HTML */
+    width: auto !important; 
+    
+    /* Garante que imagens muito largas não estourem a tela */
+    max-width: 100%; 
+    
+    /* Centraliza a imagem no carrossel */
+    margin: 0 auto;
+    display: block;
+    border-radius: var(--border-radius-moderno);
+}
+
+/* MELHORIA: Legenda do Carrossel */
+.portfolio-carousel .carousel-caption {
+    /* Gradiente sutil para garantir legibilidade */
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
+    border-radius: 0 0 var(--border-radius-moderno) var(--border-radius-moderno); /* Arredonda só embaixo */
+    bottom: 0; /* Cola na base */
+    left: 0;
+    right: 0;
+    padding: 2.5rem 2rem 2rem 2rem; /* Mais espaço */
+    text-align: left; /* Mais moderno que centralizado */
+}
+.portfolio-carousel .carousel-caption h5 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+}
+.portfolio-carousel .carousel-caption p {
+    font-size: 1.1rem;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+}
+
+/* MELHORIA: Indicadores do Carrossel */
+.portfolio-carousel .carousel-indicators button {
+    /* Troca de linhas para círculos */
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--cor-branco);
+    opacity: 0.5;
+    margin: 0 8px;
+    border: none;
+    transition: var(--transicao-padrao);
+}
+
+.portfolio-carousel .carousel-indicators .active {
+    opacity: 1;
+    background-color: var(--cor-principal-azul); /* Destaque azul */
+    transform: scale(1.2);
+}
+
+
+/* --- Seção "Diferenciais" --- */
+.features-section {
+    padding: 6rem 0;
+    background: white; /* Fundo branco para contrastar com a seção escura */
+}
+.feature-card {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: transparent;
+    border-radius: var(--border-radius-moderno);
+    transition: var(--transicao-padrao);
+    height: 100%;
+}
+
+/* MELHORIA: Efeito de hover no card */
+.feature-card:hover {
+    background: var(--cor-cinza-claro);
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 4rem; /* Tamanho do Bootstrap Icon */
+    color: var(--cor-principal-azul); /* Ícones azuis */
+    margin-bottom: 1.5rem;
+    display: inline-block; /* Garante que o ícone seja exibido */
+}
+.feature-text {
+    font-size: 1rem;
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+/* --- Seção Sobre (Puxada do sobre.html) --- */
+.about-section {
+    padding: 6rem 0;
+}
+.about-image {
+    border-radius: var(--border-radius-moderno);
+    box-shadow: var(--sombra-moderna-media);
+}
+
+/* --- Seção CTA (Rosa) --- */
+.cta-section {
+    padding: 6rem 0;
+}
+.cta-box {
+    /* Usando o ROSA aqui, como pedido */
+    background: var(--cor-destaque-rosa); 
+    border-radius: 30px;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: white;
+    box-shadow: 0 20px 60px rgba(236, 0, 140, 0.3);
+}
+.cta-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.cta-text {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+/* Botão do CTA rosa será branco */
+.btn-cta-light {
+    background: white;
+    color: var(--cor-destaque-rosa); /* Texto rosa */
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    border: none;
+    transition: var(--transicao-padrao);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+.btn-cta-light:hover {
+    transform: scale(1.05) translateY(-2px); /* Efeito de "pulo" */
+    background: #f0f0f0;
+}
+
+
+/* ============================================
+   FIX: FAQ Polido
+   ============================================
+*/
+.faq-section {
+    padding: 6rem 0;
+    background: white;
+}
+.accordion-item {
+    border: none; /* Remove borda padrão */
+    border-bottom: 1px solid #e0e0e0; /* Adiciona apenas borda inferior */
+    border-radius: 0 !important; /* Remove border-radius */
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+.accordion-button {
+    background: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 1.5rem 1rem; /* Mais padding */
+    color: var(--cor-texto-escuro);
+}
+.accordion-button:not(.collapsed) {
+    background: white; /* Mantém branco */
+    color: var(--cor-principal-azul); /* Só o texto fica azul */
+    box-shadow: none; /* Remove sombra de "ativo" */
+}
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: transparent;
+}
+.accordion-body {
+    padding: 1.5rem;
+    background: var(--cor-cinza-claro);
+}
+
+/* MELHORIA: Ícones customizados no FAQ */
+.accordion-button::after {
+    /* Remove a seta padrão do Bootstrap */
+    display: none;
+}
+
+.accordion-button::before {
+    /* Adiciona o ícone '+' do Bootstrap */
+    font-family: 'bootstrap-icons'; /* ESSENCIAL: Diz ao CSS para usar a fonte de ícones */
+    /* \F4F3 é o código unicode para 'plus-circle-fill' */
+    content: '\F4F3'; /* CORRIGIDO */
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-right: 1rem;
+    color: var(--cor-principal-azul);
+    transition: var(--transicao-padrao);
+}
+
+.accordion-button:not(.collapsed)::before {
+    /* \F33D é o código unicode para 'dash-circle-fill' */
+    content: '\F33D'; /* CORRIGIDO */
+    color: var(--cor-destaque-rosa); /* Cor rosa no ícone aberto */
+}
+
+
+/* --- Footer --- */
+.footer {
+    background: var(--cor-footer) !important;
+    color: white;
+    padding: 3rem 0 1rem;
+}
+.footer h4 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.footer a {
+    color: white;
+    font-size: 1.5rem;
+    transition: var(--transicao-padrao);
+    display: inline-block; /* Permite o transform */
+}
+.footer a:hover {
+    color: var(--cor-principal-azul); /* Hover azul */
+    transform: scale(1.1) translateY(-3px); /* Efeito de pular */
+}
+.footer hr {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Página Contato.html --- */
+.contact-hero {
+    background: var(--cor-principal-azul); /* Header azul */
+    padding: 4rem 0;
+    color: white;
+    text-align: center;
+}
+.form-container {
+    background: white;
+    border-radius: var(--border-radius-moderno);
+    padding: 3rem;
+    box-shadow: var(--sombra-moderna-media);
+    max-width: 700px;
+    margin: 0 auto;
+}
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--cor-principal-azul);
+    box-shadow: 0 0 0 0.2rem rgba(11, 94, 215, 0.15);
+}
+.form-check-input:checked {
+    background-color: var(--cor-principal-azul);
+    border-color: var(--cor-principal-azul);
+}
+/* Botão de Enviar do Contato (Rosa) */
+.btn-submit-form {
+    background: var(--cor-destaque-rosa);
+    border-color: var(--cor-destaque-rosa);
+    color: white;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: var(--transicao-padrao);
+    box-shadow: 0 4px 15px rgba(236, 0, 140, 0.25);
+    width: 100%;
+    margin-top: 1rem;
+}
+.btn-submit-form:hover {
+    background-color: #c90076;
+    border-color: #c90076;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(236, 0, 140, 0.4);
+}
+.whatsapp-cta a {
+    color: var(--cor-principal-azul);
+    font-weight: 600;
+    text-decoration: none;
+}
+.whatsapp-cta a:hover {
+    color: var(--cor-destaque-rosa);
+    text-decoration: underline;
+}
+
+/* --- Página Sobre.html --- */
+.hero-section-sobre {
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 2rem auto;
+    max-width: 1400px;
+    border-radius: 30px;
+    box-shadow: var(--sombra-moderna-media);
+}
+.hero-section-sobre .hero-overlay {
+     /* Overlay azul */
+    background: rgba(11, 94, 215, 0.8);
+    opacity: 1;
+}
+.hero-section-sobre .hero-title em {
+    font-style: normal;
+    /* Destaque rosa/branco no "ES" */
+    background: linear-gradient(135deg, #FFFFFF 0%, #ec008c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+/* FIX: Texto opaco na página "Sobre" */
+.content-box-sobre .content-text {
+    color: #6c757d; /* Um cinza escuro legível, mas suave */
+    line-height: 1.8; /* Melhora a leitura */
+}
+.content-box-sobre {
+    border: 3px solid var(--cor-principal-azul); /* Borda Azul */
+}
+.content-box-sobre::before {
+    background: none; /* Remove borda gradiente */
+}
+.content-title-sobre {
+    color: var(--cor-principal-azul); /* Título azul */
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+}
+
+/* Carrossel de Logos (Parceiros) */
+.logos-container {
+    overflow: hidden;
+    padding: 60px 0;
+    background: white;
+    white-space: nowrap;
+    position: relative;
+}
+.logos-container:before,
+.logos-container:after {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    content: "";
+    z-index: 2;
+}
+.logos-container:before { left: 0; background: linear-gradient(to left, rgba(255, 255, 255, 0), white); }
+.logos-container:after { right: 0; background: linear-gradient(to right, rgba(255, 255, 255, 0), white); }
+
+.logos-slide { 
+    display: inline-block; 
+    /* A animação deve estar aqui, como no seu código original */
+    animation: 35s slide infinite linear; 
+}
+
+.logos-slide img { 
+    height: 100px; 
+    margin: 0 40px; 
+    filter: grayscale(100%); 
+    opacity: 0.7; 
+    transition: var(--transicao-padrao);
+}
+
+.logos-slide img:hover { 
+    filter: grayscale(0%); 
+    opacity: 1; 
+    transform: scale(1.1); 
+}
+
+/* Animação de slide infinito */
+@keyframes slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+/* Ajuste para duplicar o slide para o efeito infinito (caso o JS não faça) */
+/* No HTML, você deve duplicar o div .logos-slide para isso funcionar perfeitamente */
+.logos-slide + .logos-slide {
+    display: inline-block;
+}
+/* ============================================
+   NOVAS MELHORIAS DE IMAGEM
+   ============================================
+*/
+
+/* Estilo padrão para imagens dentro de conteúdo */
+.content-section img,
+.about-section img,
+.features-section img,
+.how-it-works-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-moderno); /* Bordas arredondadas */
+    box-shadow: var(--sombra-moderna-suave); /* Sombra suave */
+    transition: var(--transicao-padrao);
+}
+
+/* Efeito de hover para imagens em cards ou seções */
+.content-section img:hover,
+.about-section img:hover,
+.features-section img:hover,
+.how-it-works-section img:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-moderna-media);
+}
+
+/* Se precisar de um estilo mais específico para certas imagens */
+.img-moderna {
+    border-radius: var(--border-radius-moderno);
+    box-shadow: var(--sombra-moderna-media);
+    transition: var(--transicao-padrao);
+    display: block; /* Para centralizar se necessário com margin: auto */
+    max-width: 100%;
+    height: auto;
+}
+
+.img-moderna:hover {
+    transform: scale(1.02); /* Leve aumento no hover */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
